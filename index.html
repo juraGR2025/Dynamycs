@@ -4,174 +4,58 @@
     <title>Динамика расчётов</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=".idea/css/style.css"/>
-    <script src=".idea/js/main.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./js/main.js"></script>
 </head>
 <body>
 <div class="header">
-
-    <img src=".idea/source/Logo-1.png" alt="Логотип" class="logo">
+    <img src="./source/Logo-1.png" alt="Логотип" class="logo">
     <div class="header-text">
-        <h1> ВОЕННО-КОСМИЧЕСКАЯ АКАДЕМИЯ ИМЕНИ А.Ф.МОЖАЙСКОГО</h1>
-        <p>Лабораторная работа
-            "Исследование праметров динамики груза на крюке"</p>
+        <h1>ВОЕННО-КОСМИЧЕСКАЯ АКАДЕМИЯ ИМЕНИ А.Ф. МОЖАЙСКОГО</h1>
+        <p>Лабораторная работа "Исследование параметров динамики груза на крюке"</p>
     </div>
 </div>
 
+<!-- Первая часть: ввод данных учащегося -->
 <div class="user-info">
-    <h2>1.Ваши данные</h2>
+    <h2>1. Ваши данные</h2>
     <form id="userForm">
         <label for="cadetName">ФИО:</label>
-        <input type="text"  id="cadetName" class="person-input" name="fullName" required>
-        <label id="Name"></label>
+        <input type="text" id="cadetName" class="person-input" name="fullName" required>
+        <div id="Name"></div>
 
         <label for="groupNumber">Номер учебной группы:</label>
         <input type="number" id="groupNumber" class="person-input" name="groupNumber" required>
-        <label id="groupN"></label>
-        <br/>
-        <button type="submit" id="fio-write" >Принять</button>
-    </form>
-</div>
-<!--
-<body>
-<div id="test-container"></div>
-<script src="script.js"></script>
-</body>
--->
-
-<div class="test-section">
-    <h2>2.Тестовая часть</h2>
-    <form id="testForm">
-
-        <div class="question">
-            <p>1. Вопрос 1.  Что такое колебания?</p>
-            <div class="options">
-                <label><input type="radio" name="q1" value="a"> Явление, возникающее под действием внешних сил;</label>
-                <label><input type="radio" name="q1" value="b"> Процесс, многократно повторяющийся через определённый промежуток времени;</label>
-                <label><input type="radio" name="q1" value="c"> Процесс, обусловленный движением тела;</label>
-                <label><input type="radio" name="q1" value="d"> Явление, характеризуемое кинетической энергией тела.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>2. Вопрос 2. В чём измеряется частота колебаний?</p>
-            <div class="options">
-                <label><input type="radio" name="q2" value="a"> Секундах;</label>
-                <label><input type="radio" name="q2" value="b"> Герцах;</label>
-                <label><input type="radio" name="q2" value="c"> Минутах;</label>
-                <label><input type="radio" name="q2" value="d"> Амперах.</label>
-            </div>
-        </div>
-
-
-        <div class="question">
-            <p>3. Вопрос 3.  Какой редуктор входит в состав механизма подъёма груза в лабораторной работе?</p>
-            <div class="options">
-                <label><input type="radio" name="q3" value="a"> 1-ступенчатый;</label>
-                <label><input type="radio" name="q3" value="b"> 2-ступенчатый;</label>
-                <label><input type="radio" name="q3" value="c"> 3-ступенчатый;</label>
-                <label><input type="radio" name="q3" value="d"> 4-ступенчатый;</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>4. Вопрос 4.  Что позволяет определить обработка записи осциллографа?</p>
-            <div class="options">
-                <label><input type="radio" name="q4" value="a"> Время колебаний;</label>
-                <label><input type="radio" name="q4" value="b"> Массу груза;</label>
-                <label><input type="radio" name="q4" value="c"> Частоту и амплитуду колебаний груза.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>5. Вопрос 5.  Какая команда подаётся при выявлении неисправностей в ходе эксперимента?</p>
-            <div class="options">
-                <label><input type="radio" name="q5" value="a"> Прекратить работу</label>
-                <label><input type="radio" name="q5" value="b"> Стоп;</label>
-                <label><input type="radio" name="q5" value="c"> Все приборы отключить;</label>
-                <label><input type="radio" name="q5" value="d"> Отставить.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>6. Вопрос 6.  В каких единицах измеряется частота?</p>
-            <div class="options">
-                <label><input type="radio" name="q6" value="a"> Гн;</label>
-                <label><input type="radio" name="q6" value="b"> Гц;</label>
-                <label><input type="radio" name="q6" value="c"> Гр.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>7. Вопрос 7.  Какой тип кранов предназначен для работы в прямоугольной зоне?</p>
-            <div class="options">
-                <label><input type="radio" name="q7" value="a"> Стреловой;</label>
-                <label><input type="radio" name="q7" value="b"> Мостовой;</label>
-                <label><input type="radio" name="q7" value="c"> Кабельный.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>8. Вопрос 8.  Что такое траверса?</p>
-            <div class="options">
-                <label><input type="radio" name="q8" value="a"> Грузозахватное приспособление;</label>
-                <label><input type="radio" name="q8" value="b"> Крюковая подвеска;</label>
-                <label><input type="radio" name="q8" value="c"> Оба варианта.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>9. Вопрос 9.  Что относится к гибким элементам ГПМ?</p>
-            <div class="options">
-                <label><input type="radio" name="q9" value="a"> Сварные цепи;</label>
-                <label><input type="radio" name="q9" value="b"> Стальные канаты;</label>
-                <label><input type="radio" name="q9" value="c"> Оба варианта;</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>10. Вопрос 10.  При выполнении ППР возможно возникновение нештатных режимов работы ГПМ. Выберите примеры штатной работы ГПМ.</p>
-            <div class="options">
-                <label><input type="radio" name="q10" value="a"> Подъём с подхватом;</label>
-                <label><input type="radio" name="q10" value="b"> Пуск вниз;</label>
-                <label><input type="radio" name="q10" value="c"> Торможение на подъёме;</label>
-                <label><input type="radio" name="q10" value="d"> Обрыв груза;</label>
-                <label><input type="radio" name="q10" value="e"> Пуск вверх в веса;</label>
-                <label><input type="radio" name="q10" value="f"> Торможение на спуске.</label>
-            </div>
-        </div>
-
-        <div class="question">
-            <p>11. Вопрос 11.  Какой инструктаж проводится с целью напоминания основных прави безопасности при выполнении той или иной операции?</p>
-            <div class="options">
-                <label><input type="radio" name="q11" value="a"> Вводный инструктаж;</label>
-                <label><input type="radio" name="q11" value="b"> Первичный инструктаж;</label>
-                <label><input type="radio" name="q11" value="c"> Переодический инструктаж;</label>
-                <label><input type="radio" name="q11" value="d"> Инструктаж перед началом работ.</label>
-            </div>
-        </div>
-
-        <button type="submit" id="test-proof">Завершить тест</button>
+        <div id="groupN"></div>
+        <br />
+        <button type="submit" id="fio-write">Принять</button>
     </form>
 </div>
 
+<!-- Вторая часть: тестовые вопросы -->
+<div class="test-section hidden">
+    <h2 class="section-header">2. Выполните тест</h2>
+    <div id="quiz-container"></div> <!-- Контейнер для вопросов -->
+</div>
 
+<!-- Третья часть: вертикальные поля и горизонт -->
 <div class="user-info">
-    <h3>3.Вертикальные поля</h3>
+    <h3 class="section-header">3. Вертикальные поля</h3>
 </div>
 
 <div class="user-info">
-    <h3>4.Горизонт</h3>
+    <h3 class="section-header">4. Горизонт</h3>
 </div>
 
+<!-- Четвёртая часть: выводы по работе -->
 <div class="test-section">
-
     <div class="question">
-        <h5>5.Выводы вычисления</h5>
+        <h3>5. Выводы по работе:</h3>
         <textarea id="comments" name="comments" placeholder="Введите ваш вывод здесь"></textarea>
     </div>
-    <button type="submit">Завершить тест</button>
+    <button type="submit">Завершить работу</button>
 </div>
-<footer>&COPY; Copyright 2025</footer>
+
+<footer>© Copyright 2025</footer>
 </body>
 </html>
