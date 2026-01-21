@@ -46,7 +46,7 @@ body {
 }
 
 .question {
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
 }
@@ -83,7 +83,21 @@ button:hover {
 .options {
     margin-left: 20px;
 }
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
 
+.options label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.options input[type='checkbox'] {
+    margin-right: 5px;
+}
 label {
     display: block;
     margin: 8px 0;
@@ -160,7 +174,7 @@ footer {
 }
 
 .results {
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -192,4 +206,65 @@ footer {
 
 .section-header {
     margin-bottom: 30px;
+}
+
+/* Стилизация фиксированного контейнера */
+#quiz-container {
+    position: relative;
+    height: 500px; /* Фиксированная высота */
+    overflow-y: auto; /* Скроллинг, если содержание превышает высоту */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px; /* Минимальное внутреннее пространство */
+    background-color: transparent;
+    transition: opacity 1s ease-in-out; /* Плавное изменение прозрачности */
+}
+
+.fade-in {
+    animation: fadeIn 1s forwards;
+}
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(0.9); }
+}
+.check-answer-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.check-answer-wrapper span {
+    margin-left: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Между карточками */
+.card + .card {
+    margin-top: 5px; /* Минимальный промежуток между карточками */
 }

@@ -77,18 +77,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Функция для отображения следующего вопроса
     function showNextQuestion() {
         if (currentQuestionIndex >= limitedQuestions.length) {
-            // Очищаем контейнер с вопросами
+            // Все вопросы закончены, показываем результаты
             document.getElementById('quiz-container').innerHTML = '';
-            displayResults(); // Завершение теста
+            displayResults();
             return;
         }
 
         const quizContainer = document.getElementById('quiz-container');
-        quizContainer.innerHTML = ''; // очищаем контент предыдущего вопроса
+        quizContainer.innerHTML = ''; // Очищаем контент предыдущего вопроса
 
         const questionData = limitedQuestions[currentQuestionIndex];
         const cardDiv = document.createElement('div');
-        cardDiv.className = 'card';
+        cardDiv.className = 'card fade-in'; // Новый класс fade-in
 
         // Картинка вопроса
         const imgElem = document.createElement('img');
@@ -96,17 +96,16 @@ document.addEventListener('DOMContentLoaded', function () {
         imgElem.alt = 'Вопрос';
         cardDiv.appendChild(imgElem);
 
-        // Заголовок вопроса
-        const labelText = document.createElement('p');
-        labelText.textContent = questionData.question;
-        cardDiv.appendChild(labelText);
-
         // Варианты ответов
         const options = [];
         for (let i = 0; i < questionData.responseOptions; i++) {
             const optionLetter = String.fromCharCode(65 + i); // Генерация букв A, B, C ...
             options.push(optionLetter);
         }
+
+        // Блок для вариантов ответов
+        const optionsBlock = document.createElement('div');
+        optionsBlock.className = 'options';
 
         options.forEach((option) => {
             const optionLabel = document.createElement('label');
@@ -117,14 +116,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             optionLabel.textContent = `${option}`;
             optionLabel.prepend(radioInput);
-            cardDiv.appendChild(optionLabel);
+            optionsBlock.appendChild(optionLabel);
         });
 
+        cardDiv.appendChild(optionsBlock);
+
         // Кнопка для проверки ответа
+        const submitButtonWrapper = document.createElement('div'); // Новый div-обёртка
+        submitButtonWrapper.className = 'check-answer-wrapper';
+
         const submitButton = document.createElement('button');
         submitButton.textContent = 'Проверить ответ';
         submitButton.onclick = checkAnswer;
-        cardDiv.appendChild(submitButton);
+        submitButtonWrapper.appendChild(submitButton);
+
+        cardDiv.appendChild(submitButtonWrapper); // Прилепляем wrapper с кнопкой к карточке
 
         quizContainer.appendChild(cardDiv);
     }
@@ -145,23 +151,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Сохраняем результат в массив
         results.push({
-            question: limitedQuestions[currentQuestionIndex].question,
+            question: limitedQuestions[currentQuestionIndex].question, // Только тут сохраняется вопрос
             answerGiven: checkedOptions,
             isCorrect: isCorrect
         });
 
-        // Показываем мгновенную реакцию
-        const parentCard = document.querySelector('.card');
+        // Индикатор правильного/неправильного ответа
         const resultIndicator = document.createElement('span');
         resultIndicator.className = isCorrect ? 'result-correct' : 'result-incorrect';
         resultIndicator.textContent = isCorrect ? '✅' : '❌';
-        parentCard.appendChild(resultIndicator);
 
-        // Ждем 1,5 секунды и переходим к следующему вопросу
+        // Родительская карточка
+        const parentCard = document.querySelector('.card');
+
+        // Получаем кнопку проверки и её обёртку
+        const submitButtonWrapper = parentCard.querySelector('.check-answer-wrapper');
+
+        // Добавляем индикатор справа от кнопки
+        submitButtonWrapper.appendChild(resultIndicator);
+
+        // Затем начинаем процесс выхода карточки (добавляем класс fade-out)
+        parentCard.classList.add('fade-out');
+
+        // По завершении анимации удаляем карточку и показываем следующий вопрос
         setTimeout(() => {
+            parentCard.remove();
             currentQuestionIndex++;
             showNextQuestion();
-        }, 1100);
+        }, 1000); // Время анимации (1 секунда)
     }
 
     // Функция для перемешивания массива вопросов
@@ -183,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
             resultItem.className = 'result-item';
 
             const questionSpan = document.createElement('span');
-            questionSpan.textContent = result.question;
+            questionSpan.textContent = result.question; // Выводим вопрос в результатах
 
             const indicatorSpan = document.createElement('span');
             indicatorSpan.className = result.isCorrect ? 'result-correct' : 'result-incorrect';
