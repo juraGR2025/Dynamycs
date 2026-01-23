@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <title>Динамика расчётов</title>
     <meta charset="UTF-8">
@@ -11,8 +11,8 @@
 <div class="header">
     <img src="./source/Logo-1.png" alt="Логотип" class="logo">
     <div class="header-text">
-        <h1>ВОЕННО-КОСМИЧЕСКАЯ АКАДЕМИЯ ИМЕНИ А.Ф. МОЖАЙСКОГО</h1>
-        <p>Лабораторная работа "Исследование параметров динамики груза на крюке"</p>
+        <h1>ВОЕННО-КОСМИЧЕСКАЯ АКАДЕМИЯ ИМЕНИ А.Ф.МОЖАЙСКОГО</h1>
+        <h3>Лабораторная работа "Исследование параметров динамики груза на крюке"</h3>
     </div>
 </div>
 
@@ -39,19 +39,36 @@
 </div>
 
 <!-- Третья часть: управление мостовым краном -->
-<div class="user-info">
+<div class="animation-block">
     <h3 class="section-header">3. Переместите груз мостовым краном</h3>
+    <div class="pult-container">
+        <!-- Красная кнопка Стоп -->
+        <button id="stopButton">Стоп</button>
+
+        <!-- Верхняя группа кнопок -->
+        <div class="direction-buttons-up">
+            <button class="dir-btn up"><span>⬆️</span></button>
+            <button class="dir-btn down"><span>⬇️</span></button>
+            <button class="dir-btn left"><span>⬅️</span></button>
+            <button class="dir-btn right"><span>➡️</span></button>
+            <button class="dir-btn forward"><span>↗️</span></button>
+            <button class="dir-btn backward"><span>↙️</span></button>
+        </div>
+
+        <!-- Лампочка-индикатор -->
+        <div class="power-indicator"></div>
+    </div>
 </div>
 
 <!-- Четвертая часть: графики горизонтальных и вертикальных колебаний -->
-<div class="user-info">
-    <h3 class="section-header">4. Графики колебаний</h3>
+<div class="chart-block">
+    <h2 class="section-header">4. Графики колебаний</h2>
 </div>
 
 <!-- Пятая часть: выводы по работе -->
 <div class="test-section">
     <div class="question">
-        <h3>5. Выводы по работе:</h3>
+        <h2>5. Выводы по работе:</h2>
         <textarea id="comments" name="comments" placeholder="Введите ваш вывод здесь"></textarea>
     </div>
     <button type="submit">Завершить работу</button>

@@ -214,4 +214,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.getElementById('quiz-container').appendChild(resultsContainer);
     }
+
+    // Функция для кнопок пульта мостового крана.
+    document.querySelectorAll('.dir-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            console.log(`Нажата кнопка ${btn.classList.contains('up') ? 'Вверх' : btn.classList.contains('down') ? 'Вниз' : btn.classList.contains('left') ? 'Влево' : btn.classList.contains('right') ? 'Вправо' : btn.classList.contains('forward') ? 'Вперед' : 'Назад'}`);
+        });
+    });
+
+    document.getElementById('stopButton').addEventListener('click', () => {
+        console.log('Нажата кнопка СТОП');
+    });
+
+
 });
