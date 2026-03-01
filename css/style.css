@@ -354,3 +354,32 @@ footer {
     from { opacity: 1; }
     to { opacity: 0.5; }
 }
+/* Общие стили для всех графиков */
+.canvas {
+    border: 2px solid blue; /* Возвращаем границу обратно */
+    background-color: white;
+    aspect-ratio: 1 / 1; /* Сохраняем квадратную форму */
+    width: 100%; /* Градиент подстраивается под ширину родителя */
+    height: auto; /* Высота определяется шириной */
+}
+
+.graph-container {
+    display: flex;
+    flex-wrap: wrap; /* Переносим графику на следующую строку */
+    justify-content: center;
+    gap: 20px; /* Интервал между графиками */
+    padding-top: 20px;
+}
+
+/* Классы для отдельных рядов */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Каждая пара графиков находится в отдельном ряду */
+.row > div {
+    flex-basis: calc(50% - 10px); /* Каждое окно графика занимает половину строки минус расстояние между ними */
+}
