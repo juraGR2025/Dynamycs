@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const startBtn = document.getElementById('start-test-btn');
         startBtn.style.display = 'block';
     }
-
+// Добавляем слушателя для кнопки <button type="submit" id="fio-write">Принять</button>.
     btnFIO.addEventListener("click", buttonFIOclicked);
 
 
@@ -228,6 +228,21 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Нажата кнопка СТОП');
     });
 
+ // Функция для завершения лабораторной работы. Обучающийся набирает вывод в элементе <textarea id="comments" name="comments" placeholder="Введите ваш вывод здесь"></textarea>
+ // и сохраняет его на странице в элементе <div id="txt-finding"></div>.
+    var btnFinding = document.getElementById("finding-write");
+
+    function buttonFindingClicked() {
+        var findingText = document.getElementById('comments');
+        var divFinding = document.getElementById("txt-finding");
+        divFinding.innerHTML = findingText.value;
+
+        findingText.value = ''; // Обнуляем значение переменной в элементе input.
+
+    }
+// Добавляем слушателя для кнопки <button type="submit" id="fio-write">Принять</button>.
+    btnFinding.addEventListener("click", buttonFindingClicked);
+
 //----------------------------------------
 
 const gsp = 9.8;              // ускорение свободного падения
@@ -254,14 +269,18 @@ const P_n = 15000;            // начальная сила привода
             this.ctx.lineWidth = 1; // Толщина линии в пикселах
             this.width = canvas.width;
             this.height = canvas.height;
+            this.ctx.clearRect(0, 0, this.width, this.height);
+console.log('Панель создана!');
 
         }
         // Очистка холста перед работой
                 clearCanvas() {
+
                     this.ctx.clearRect(0, 0, this.width, this.height);
                     console.log('Холст очищен!');
                 }
     clearAndDrawGrid() {
+
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.strokeStyle = 'red';
         this.ctx.beginPath();
@@ -430,10 +449,11 @@ function reloadPageWithNewData() {
         panel.drawLabels(flags.Function_1, flags.Function_2, flags.Function_3, flags.Function_4); // Рисуем подписи осей
         panel.drawGraph(currentMass, 1, flags.Function_1, flags.Function_2, flags.Function_3, flags.Function_4); // Отображение самого графика
     });
+
 }
 
 // 📌 Кнопка для перерисовки графиков
-    const chartBuilderButton = document.getElementById('chart-builder');
+    var chartBuilderButton = document.getElementById('chart-builder');
 
     // 📌 Новая функция для перерисовки графиков
      // 🖍️ Функция для перерисовки графиков
@@ -458,9 +478,6 @@ function reloadPageWithNewData() {
 
                 const panel = new GraficsPanel(id);
 
-                // 👈👆🤝 ЭТО КЛЮЧЕВЫЙ МОМЕНТ! ОЧИСТКА ХОЛСТА ДО НАРИСОВКИ!
-                panel.clearCanvas(); // Очистка холста перед прорисовкой
-
                 // Настройка флагов в зависимости от типа колебаний
                 const flags = {};
                 if (currentType === 'vertical') {
@@ -471,6 +488,9 @@ function reloadPageWithNewData() {
                     flags.Function_2 = 1;
                 }
 
+
+                // 👈👆🤝 ЭТО КЛЮЧЕВЫЙ МОМЕНТ! ОЧИСТКА ХОЛСТА ДО НАРИСОВКИ!
+                panel.clearCanvas(); // Очистка холста перед прорисовкой
                 panel.clearAndDrawGrid(); // Создание новой сетки
                 panel.drawLabels(flags.Function_1, flags.Function_2, flags.Function_3, flags.Function_4); // Рисуем подписи осей
                 panel.drawGraph(currentMass, 1, flags.Function_1, flags.Function_2, flags.Function_3, flags.Function_4); // Отображение самого графика
@@ -483,7 +503,5 @@ function reloadPageWithNewData() {
     } else {
         console.error('Кнопка с id="chart-builder" не найдена.');
     }
-
-//++++++++++++++++++++++++++++++++++++++++
 
 });
