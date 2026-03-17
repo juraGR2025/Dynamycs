@@ -458,6 +458,7 @@ function reloadPageWithNewData() {
     // 📌 Новая функция для перерисовки графиков
      // 🖍️ Функция для перерисовки графиков
         function renderGraphs() {
+
             // Массив ID для наших графиков
             const graphIds = ['graph1', 'graph2', 'graph3', 'graph4', 'graph5', 'graph6'];
 
